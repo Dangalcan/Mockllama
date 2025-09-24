@@ -1,31 +1,41 @@
 import express from "express";
 import cors from "cors";
+import  { generateTokens }  from "./utils.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 const PORT = 11435;
 
-app.post("/api/generate", (req, res) => {
+function withDelay(handler) {
+  return (req, res) => {
+    const responseTime = parseInt(req.body.responseTime) || 0;
+    setTimeout(() => handler(req, res), responseTime);
+  };
+}
+
+app.post("/api/generate", withDelay((req, res) => {
+  const tokens = parseInt(req.body.tokens) || 10;
   res.json({
     model: req.body.model || "mock-model",
     created_at: new Date().toISOString(),
-    response: "This is a mock LLM response.",
+    response: generateTokens(tokens),
     done: true,
   });
-});
+}));
 
-app.post("/api/chat", (req, res) => {
+app.post("/api/chat", withDelay((req, res) => {
+  const tokens = parseInt(req.body.tokens) || 10;
   res.json({
     model: req.body.model || "mock-model",
     created_at: new Date().toISOString(),
     message: {
       role: "assistant",
-      content: "HI! I am an Ollama mock and I always give this answer :)",
+      content: generateTokens(tokens),
     },
     done: true,
   });
-});
+}));
 
 app.get("/api/tags", (req, res) => {
   res.json({
@@ -49,5 +59,5 @@ app.delete("/api/delete", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Mock Ollama API running in http://localhost:${PORT}`);
+  console.log(`✅ Mock Ollama API running at http://localhost:${PORT}`);
 });
