@@ -9,7 +9,7 @@ const PORT = 11435;
 
 function withDelay(handler) {
   return (req, res) => {
-    const responseTime = parseInt(req.body.responseTime) || 0;
+    const responseTime = req.body.responseTime ? parseInt(req.body.responseTime) || 0 : 0;
     setTimeout(() => handler(req, res), responseTime);
   };
 }
