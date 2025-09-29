@@ -1,3 +1,23 @@
+# Release v1.0.2
+
+## Features
+No new features.
+## Tests
+No test changes.
+## Documentation
+No documentation changes.
+## Fixes
+- fix: solve problem with POST requesrs missing body ([8c0dfc3](https://github.com/Dangalcan/Mockllama/commit/8c0dfc3))
+
+## Continuous integration (CI)
+No CI changes.
+## Other changes
+- chore: update both CHANGELOG.md and update .version for v1.0.1 ([4ffe82a](https://github.com/Dangalcan/Mockllama/commit/4ffe82a))
+
+## Full commit history
+
+For a complete list of commits included in this release, please visit the [commit history](https://github.com/Dangalcan/Mockllama/compare/v1.0.1...v1.0.2).
+
 # Release v1.0.1
 
 ## Features
