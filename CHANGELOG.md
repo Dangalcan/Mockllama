@@ -1,3 +1,23 @@
+# Release v1.0.1
+
+## Features
+No new features.
+## Tests
+No test changes.
+## Documentation
+No documentation changes.
+## Fixes
+- fix: fix problem with response time being undefined ([17cd2c3](https://github.com/Dangalcan/Mockllama/commit/17cd2c3))
+
+## Continuous integration (CI)
+No CI changes.
+## Other changes
+- chore: update both CHANGELOG.md and update .version for v1.0.0 ([b21d9d2](https://github.com/Dangalcan/Mockllama/commit/b21d9d2))
+
+## Full commit history
+
+For a complete list of commits included in this release, please visit the [commit history](https://github.com/Dangalcan/Mockllama/compare/v1.0.0...v1.0.1).
+
 # Release v1.0.0
 
 ## Features
