@@ -9,15 +9,15 @@ const PORT = 11435;
 
 function withDelay(handler) {
   return (req, res) => {
-    const responseTime = req.body.responseTime ? parseInt(req.body.responseTime) || 0 : 0;
+    const responseTime = req.body?.responseTime ? parseInt(req.body.responseTime) || 0 : 0;
     setTimeout(() => handler(req, res), responseTime);
   };
 }
 
 app.post("/api/generate", withDelay((req, res) => {
-  const tokens = parseInt(req.body.tokens) || 10;
+  const tokens = parseInt(req.body?.tokens) || 10;
   res.json({
-    model: req.body.model || "mock-model",
+    model: req.body?.model || "mock-model",
     created_at: new Date().toISOString(),
     response: generateTokens(tokens),
     done: true,
@@ -25,7 +25,7 @@ app.post("/api/generate", withDelay((req, res) => {
 }));
 
 app.post("/api/chat", withDelay((req, res) => {
-  const tokens = parseInt(req.body.tokens) || 10;
+  const tokens = parseInt(req.body?.tokens) || 10;
   res.json({
     model: req.body.model || "mock-model",
     created_at: new Date().toISOString(),
